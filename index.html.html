@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Aziz General Store | Charsadda - Daily Essentials, Dairy, Gas & Vegetables</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Theme Configuration matching Shop Banner (Blue & Gold Palette) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#f0f5ff',
+                            100: '#e0ebff',
+                            600: '#1d4ed8',
+                            800: '#1e3a8a',
+                            900: '#0f172a',
+                            950: '#0a0f1d',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#d97706',
+                            600: '#b45309',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0f172a;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen font-sans antialiased selection:bg-navy-800 selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT & CONTACT BAR -->
+    <div class="bg-navy-950 text-slate-100 text-xs py-2 px-4 border-b border-navy-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center flex-wrap justify-center sm:justify-start gap-3 sm:gap-6 text-slate-200 font-medium">
+                <a href="tel:+923150757291" class="hover:text-gold-400 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-gold-400"></i>
+                    <span>+92 315 0757291</span>
+                </a>
+                <a href="https://wa.me/923150757291" target="_blank" class="hover:text-emerald-400 transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+                    <span>WhatsApp Order</span>
+                </a>
+                <a href="https://maps.app.goo.gl/qvFRjHMeYpwUWzWH8" target="_blank" class="hover:text-gold-400 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-rose-400"></i>
+                    <span class="truncate max-w-[260px] sm:max-w-none">Mohalah Mian Gain Village Ibarahim Zain, Charsadda</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-2 text-[11px]">
+                <span class="bg-navy-900 text-gold-400 border border-gold-500/30 px-3 py-0.5 rounded-full font-bold">
+                    <i class="fa-regular fa-clock mr-1"></i> Open Daily: 6:00 AM - 11:00 PM
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BRAND LOGO -->
+                <div class="flex items-center gap-3 cursor-pointer group" onclick="switchMainTab('store')">
+                    <div class="w-12 h-12 bg-gradient-to-br from-navy-800 to-navy-950 rounded-2xl flex items-center justify-center text-gold-400 shadow-lg shadow-navy-900/20 group-hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-store text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-black text-navy-950 tracking-tight leading-none">
+                            Abdul Aziz <span class="text-navy-600">General Store</span>
+                        </h1>
+                        <p class="text-xs text-slate-500 font-bold mt-1 flex items-center gap-1">
+                            <i class="fa-solid fa-map-pin text-gold-500"></i> Charsadda, KP
+                        </p>
+                    </div>
+                </div>
+
+                <!-- NAVIGATION / ACTIONS -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <a href="https://maps.app.goo.gl/qvFRjHMeYpwUWzWH8" target="_blank" class="hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition">
+                        <i class="fa-solid fa-map-location-dot text-rose-500 text-sm"></i>
+                        <span>Location</span>
+                    </a>
+
+                    <button onclick="openAdminPortal()" class="px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-shield text-navy-800"></i>
+                        <span class="hidden md:inline">Admin Dashboard</span>
+                    </button>
+
+                    <button onclick="toggleCartModal()" class="relative px-4 py-2.5 rounded-xl bg-navy-800 hover:bg-navy-900 text-white font-bold text-xs sm:text-sm transition shadow-lg shadow-navy-800/20 flex items-center gap-2">
+                        <i class="fa-solid fa-basket-shopping text-gold-400 text-base"></i>
+                        <span class="hidden sm:inline">Cart</span>
+                        <span id="cart-badge" class="bg-gold-400 text-slate-950 text-xs font-black rounded-full h-5.5 w-5.5 min-w-[22px] flex items-center justify-center px-1 ml-0.5">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN STORE FRONT-END SECTION -->
+    <main id="store-section" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
+        
+        <!-- SHOP FRONT BANNER SECTION -->
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-navy-950 group">
+            <img src="shop.PNG" alt="Abdul Aziz General Store Front" class="w-full h-48 sm:h-72 lg:h-96 object-cover object-center group-hover:scale-105 transition duration-700 opacity-95" onerror="this.onerror=null; this.src='https://placehold.co/1200x400/0f172a/fbbf24?text=Abdul+Aziz+General+Store';">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent flex flex-col justify-end p-6 sm:p-10 text-white">
+                <div class="max-w-3xl space-y-2">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-gold-400 text-slate-950 rounded-full text-xs font-black tracking-wide uppercase">
+                        <i class="fa-solid fa-star"></i> Store Front Banner
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+                        عبدالعزیز جنرل اسٹور
+                    </h2>
+                    <p class="text-xs sm:text-base text-slate-200 font-medium leading-relaxed max-w-2xl">
+                        روزمرہ ضروریات زندگی کا مکمل سینٹر — Daily essentials, pure buffalo milk & fresh yogurt, gas cylinder refills, and farm fresh vegetables in Charsadda.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEARCH, SORT AND CATEGORY FILTERS -->
+        <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center">
+                
+                <!-- SEARCH INPUT -->
+                <div class="relative flex-1 min-w-[240px]">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400"></i>
+                    <input type="text" id="search-input" onkeyup="handleFilterAndSort()" placeholder="Search milk, yogurt, gas cylinder, potatoes, grocery..." class="w-full pl-11 pr-4 py-2.5 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800 focus:bg-white transition">
+                </div>
+
+                <!-- SORT DROPDOWN -->
+                <div class="w-full sm:w-auto flex items-center gap-2">
+                    <label class="text-xs font-bold text-slate-500 whitespace-nowrap"><i class="fa-solid fa-sort mr-1"></i> Sort By:</label>
+                    <select id="sort-select" onchange="handleFilterAndSort()" class="w-full sm:w-auto px-3 py-2.5 bg-slate-50 border border-slate-200 text-xs sm:text-sm font-semibold rounded-xl focus:outline-none focus:ring-2 focus:ring-navy-800">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- CATEGORY PILLS -->
+            <div id="category-pills" class="flex items-center gap-2 overflow-x-auto pt-2 pb-1 scrollbar-none">
+                <!-- Dynamically rendered categories -->
+            </div>
+        </div>
+
+        <!-- PRODUCTS GRID SECTION -->
+        <div>
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h3 id="current-category-title" class="text-xl sm:text-2xl font-black text-slate-900">All Available Items</h3>
+                    <p id="product-count" class="text-xs text-slate-500 mt-0.5 font-medium">Loading store inventory...</p>
+                </div>
+            </div>
+
+            <!-- PRODUCT CARDS GRID -->
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Dynamically Populated Cards -->
+            </div>
+
+            <!-- EMPTY SEARCH RESULTS VIEW -->
+            <div id="no-products-view" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200">
+                <i class="fa-solid fa-box-open text-5xl text-slate-300 mb-3"></i>
+                <h4 class="text-lg font-bold text-slate-700">No items match your search</h4>
+                <p class="text-xs text-slate-400 mt-1">Try clearing your search filters or browse other categories.</p>
+            </div>
+        </div>
+
+        <!-- CEO / MANAGEMENT SECTION -->
+        <section class="bg-gradient-to-br from-navy-950 via-navy-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl border border-navy-800 relative overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <!-- CEO IMAGE -->
+                <div class="md:col-span-5 lg:col-span-4 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-gold-400 to-navy-600 rounded-3xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
+                        <img src="ceo.png" alt="Abdul Aziz - CEO / Owner" class="relative w-60 h-60 sm:w-72 sm:h-72 object-cover object-top rounded-2xl shadow-2xl bg-slate-800 border-2 border-gold-400/40" onerror="this.onerror=null; this.src='https://placehold.co/300x300/1e293b/ffffff?text=CEO+Photo';">
+                    </div>
+                </div>
+
+                <!-- CEO DETAILS -->
+                <div class="md:col-span-7 lg:col-span-8 space-y-4 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-gold-400/10 border border-gold-400/30 text-gold-400 rounded-full text-xs font-bold">
+                        <i class="fa-solid fa-user-tie"></i> Leadership & Management
+                    </div>
+                    <h3 class="text-2xl sm:text-4xl font-black tracking-tight text-white">
+                        Abdul Aziz <span class="text-gold-400 text-xl sm:text-2xl font-semibold">(CEO / Founder)</span>
+                    </h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
+                        "Welcome to Abdul Aziz General Store! Our mission is to provide the local community of Charsadda and Village Ibarahim Zain with pure, fresh milk, pure yogurt, reliable LPG gas cylinder supplies, fresh vegetables, and fair-priced daily household groceries. Quality and trust are our top commitments."
+                    </p>
+                    
+                    <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-4 text-xs font-semibold text-slate-300">
+                        <div class="bg-navy-900/80 border border-slate-700/60 px-4 py-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-gold-400"></i>
+                            <span>100% Guaranteed Fresh Quality</span>
+                        </div>
+                        <div class="bg-navy-900/80 border border-slate-700/60 px-4 py-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-truck-fast text-emerald-400"></i>
+                            <span>Fast Doorstep Home Delivery</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-3">
+                        <a href="https://wa.me/923150757291" target="_blank" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shadow-lg shadow-emerald-600/20">
+                            <i class="fa-brands fa-whatsapp text-base"></i> Direct Contact CEO
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ADMIN BACKEND DASHBOARD (HIDDEN UNTIL AUTHENTICATED) -->
+    <main id="admin-section" class="hidden flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+        
+        <!-- ADMIN HEADER BAR -->
+        <div class="bg-navy-950 text-white rounded-3xl p-6 shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-navy-800">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-gold-400 rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-gold-400/20">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-extrabold tracking-tight">Admin Management Dashboard</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Manage items, prices, stock levels, orders & admin security settings</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+                <button onclick="switchMainTab('store')" class="flex-1 sm:flex-none px-4 py-2.5 bg-navy-800 hover:bg-navy-700 text-slate-200 text-xs font-bold rounded-xl border border-navy-700 transition">
+                    <i class="fa-solid fa-store mr-1.5 text-gold-400"></i> Customer View
+                </button>
+                <button onclick="logoutAdmin()" class="flex-1 sm:flex-none px-4 py-2.5 bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 text-xs font-bold rounded-xl border border-rose-500/30 transition">
+                    <i class="fa-solid fa-lock mr-1.5"></i> Lock Admin
+                </button>
+            </div>
+        </div>
+
+        <!-- DASHBOARD STATS SUMMARY -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase">Total Items</p>
+                    <h4 id="stat-total-items" class="text-2xl font-black text-slate-800 mt-1">0</h4>
+                </div>
+                <div class="w-10 h-10 bg-navy-100 text-navy-800 rounded-xl flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                </div>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase">Out of Stock</p>
+                    <h4 id="stat-out-stock" class="text-2xl font-black text-rose-600 mt-1">0</h4>
+                </div>
+                <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase">Categories</p>
+                    <h4 id="stat-categories" class="text-2xl font-black text-gold-600 mt-1">0</h4>
+                </div>
+                <div class="w-10 h-10 bg-amber-100 text-gold-600 rounded-xl flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADMIN NAVIGATION TABS -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-2 flex gap-2 overflow-x-auto">
+            <button onclick="switchAdminTab('inventory')" id="tab-btn-inventory" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition text-navy-800 bg-navy-50 whitespace-nowrap">
+                <i class="fa-solid fa-boxes-stacked mr-2"></i> Inventory & Prices
+            </button>
+            <button onclick="switchAdminTab('add-product')" id="tab-btn-add" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-50 transition whitespace-nowrap">
+                <i class="fa-solid fa-circle-plus mr-2"></i> Add / Edit Item
+            </button>
+            <button onclick="switchAdminTab('orders')" id="tab-btn-orders" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-50 transition whitespace-nowrap">
+                <i class="fa-solid fa-receipt mr-2"></i> Store Orders Log
+            </button>
+            <button onclick="switchAdminTab('settings')" id="tab-btn-settings" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-50 transition whitespace-nowrap">
+                <i class="fa-solid fa-key mr-2"></i> Security & Password
+            </button>
+        </div>
+
+        <!-- TAB 1: INVENTORY TABLE -->
+        <div id="admin-tab-inventory" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="p-5 border-b border-slate-200 flex justify-between items-center flex-wrap gap-2">
+                <h3 class="font-bold text-slate-800 text-base sm:text-lg">Product Inventory</h3>
+                <button onclick="resetToDefaultData()" class="text-xs text-amber-600 hover:text-amber-700 font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-rotate-left"></i> Reset Pre-loaded Sample Data
+                </button>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-600">
+                    <thead class="bg-slate-50 text-slate-700 uppercase text-[11px] font-bold">
+                        <tr>
+                            <th class="p-4">Item Name</th>
+                            <th class="p-4">Category</th>
+                            <th class="p-4">Price (PKR / Rs.)</th>
+                            <th class="p-4">Unit</th>
+                            <th class="p-4">Stock Status</th>
+                            <th class="p-4 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-inventory-table" class="divide-y divide-slate-100">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 2: ADD / EDIT ITEM FORM -->
+        <div id="admin-tab-add-product" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm p-6 max-w-2xl mx-auto">
+            <h3 id="form-title" class="font-bold text-slate-800 text-xl mb-4 pb-3 border-b border-slate-100">Add New Item to Store</h3>
+            <form id="product-form" onsubmit="handleProductSubmit(event)" class="space-y-4">
+                <input type="hidden" id="form-product-id" value="">
+                
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Item Title / Name</label>
+                    <input type="text" id="form-name" required placeholder="e.g. Pure Buffalo Milk / Fresh Tomatoes / Gas Refill" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Category</label>
+                        <select id="form-category" required class="w-full p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800">
+                            <option value="Dairy & Milk">Dairy & Milk</option>
+                            <option value="Fresh Vegetables">Fresh Vegetables</option>
+                            <option value="Gas Cylinders">Gas Cylinders</option>
+                            <option value="Daily Grocery">Daily Grocery</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Unit Type</label>
+                        <input type="text" id="form-unit" required placeholder="e.g. per Litre, per Kg, per Cylinder, per Pack" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Price in PKR (Rs.)</label>
+                        <input type="number" id="form-price" min="1" required placeholder="220" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Stock Availability</label>
+                        <select id="form-stock" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800">
+                            <option value="true">In Stock</option>
+                            <option value="false">Out of Stock</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Icon Class</label>
+                    <input type="text" id="form-icon" placeholder="fa-bottle-droplet OR leave blank for category default" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800">
+                </div>
+
+                <div class="pt-4 flex gap-3">
+                    <button type="submit" class="flex-1 py-3 px-6 bg-navy-800 hover:bg-navy-900 text-white font-bold rounded-xl transition shadow-lg shadow-navy-800/20">
+                        <i class="fa-solid fa-floppy-disk mr-2 text-gold-400"></i> Save Item
+                    </button>
+                    <button type="button" onclick="resetForm()" class="py-3 px-5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- TAB 3: ORDERS LOG -->
+        <div id="admin-tab-orders" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="p-5 border-b border-slate-200 flex justify-between items-center">
+                <h3 class="font-bold text-slate-800 text-lg">Recorded Orders Log</h3>
+                <button onclick="clearOrdersLog()" class="text-xs text-rose-600 hover:text-rose-700 font-bold">Clear Order History</button>
+            </div>
+            <div class="p-4" id="orders-container">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- TAB 4: SECURITY & PASSWORD SETTINGS -->
+        <div id="admin-tab-settings" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm p-6 max-w-xl mx-auto space-y-6">
+            <div class="border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-navy-100 text-navy-800 rounded-xl flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-xl">Change Admin Password</h3>
+                        <p class="text-xs text-slate-500">Update your backend portal login security credentials</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="password-change-form" onsubmit="handleChangeAdminPassword(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Current Password</label>
+                    <input type="password" id="pwd-current" required placeholder="Enter current password" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">New Password</label>
+                    <input type="password" id="pwd-new" required minlength="4" placeholder="Enter new password (min 4 characters)" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Confirm New Password</label>
+                    <input type="password" id="pwd-confirm" required minlength="4" placeholder="Re-enter new password" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800">
+                </div>
+
+                <div class="pt-3 flex flex-col sm:flex-row gap-3">
+                    <button type="submit" class="flex-1 py-3 px-6 bg-navy-800 hover:bg-navy-900 text-white font-bold rounded-xl transition shadow-lg shadow-navy-800/20 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-shield-check text-gold-400"></i> Update Password
+                    </button>
+                    <button type="button" onclick="resetPasswordToDefault()" class="py-3 px-4 bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold text-xs rounded-xl transition border border-amber-200">
+                        Reset Default (admin123)
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- FOOTER WITH LOCATION & STORE INFO -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
+                
+                <!-- COLUMN 1: STORE DETAILS -->
+                <div class="space-y-3">
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                        <div class="w-8 h-8 bg-navy-800 rounded-lg flex items-center justify-center text-gold-400 font-bold">
+                            <i class="fa-solid fa-shop text-sm"></i>
+                        </div>
+                        <h4 class="font-extrabold text-navy-950 text-lg">Abdul Aziz General Store</h4>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Your one-stop store for daily grocery essentials, pure fresh milk & yogurt, gas cylinder refilling, and farm-fresh vegetables.
+                    </p>
+                </div>
+
+                <!-- COLUMN 2: LOCATION & ADDRESS -->
+                <div class="space-y-2">
+                    <h5 class="font-bold text-navy-900 text-sm uppercase tracking-wider">Location & Address</h5>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-rose-500 mr-1.5"></i>
+                        Mohalah Mian Gain Village Ibarahim Zain, Charsadda, KP
+                    </p>
+                    <a href="https://maps.app.goo.gl/qvFRjHMeYpwUWzWH8" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-navy-600 font-bold hover:underline mt-1">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Google Maps Location
+                    </a>
+                </div>
+
+                <!-- COLUMN 3: DIRECT CONTACT -->
+                <div class="space-y-2">
+                    <h5 class="font-bold text-navy-900 text-sm uppercase tracking-wider">Contact & WhatsApp</h5>
+                    <p class="text-xs text-slate-600">
+                        <i class="fa-solid fa-phone text-navy-800 mr-1.5"></i>
+                        Phone: <a href="tel:+923150757291" class="font-bold text-slate-800 hover:text-navy-600">+92 315 0757291</a>
+                    </p>
+                    <p class="text-xs text-slate-600">
+                        <i class="fa-brands fa-whatsapp text-emerald-600 mr-1.5"></i>
+                        WhatsApp: <a href="https://wa.me/923150757291" target="_blank" class="font-bold text-slate-800 hover:text-emerald-600">+92 315 0757291</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+                <p class="text-xs text-slate-400">&copy; <span id="year-span"></span> Abdul Aziz General Store - Charsadda. All rights reserved.</p>
+                <button onclick="openAdminPortal()" class="text-xs font-bold text-slate-400 hover:text-navy-800 transition">
+                    <i class="fa-solid fa-lock mr-1"></i> Admin Portal
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PASSWORD LOGIN MODAL FOR ADMIN PORTAL -->
+    <div id="admin-login-modal" class="fixed inset-0 bg-navy-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative">
+            <button onclick="closeAdminPortal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-navy-100 text-navy-800 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="text-2xl font-black text-slate-900">Admin Security Access</h3>
+                <p class="text-xs text-slate-500 mt-1">Enter admin password to manage store items & prices.</p>
+            </div>
+
+            <form onsubmit="verifyAdminPassword(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Admin Password</label>
+                    <input type="password" id="admin-password-input" required placeholder="••••••••" class="w-full p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-800 text-center text-lg tracking-widest font-bold">
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-navy-800 hover:bg-navy-900 text-white font-bold rounded-xl transition shadow-lg shadow-navy-800/30">
+                    Unlock Dashboard
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SHOPPING CART DRAWER MODAL -->
+    <div id="cart-modal" class="fixed inset-0 bg-navy-950/70 backdrop-blur-sm z-50 hidden flex justify-end">
+        <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl">
+            <!-- CART HEADER -->
+            <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-basket-shopping text-navy-800 text-xl"></i>
+                    <h3 class="font-bold text-slate-900 text-lg">Your Shopping Cart</h3>
+                </div>
+                <button onclick="toggleCartModal()" class="text-slate-400 hover:text-slate-600 p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- CART ITEMS CONTAINER -->
+            <div id="cart-items-container" class="flex-grow overflow-y-auto p-5 space-y-4">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- CART FOOTER & WHATSAPP CHECKOUT -->
+            <div class="p-5 border-t border-slate-200 bg-slate-50 space-y-4">
+                <div class="space-y-1.5">
+                    <div class="flex justify-between text-sm text-slate-600">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal" class="font-bold">Rs. 0</span>
+                    </div>
+                    <div class="flex justify-between text-base font-black text-slate-900 pt-2 border-t border-slate-200">
+                        <span>Total Amount</span>
+                        <span id="cart-total" class="text-navy-800 text-xl">Rs. 0</span>
+                    </div>
+                </div>
+
+                <!-- CUSTOMER DELIVERY INFO -->
+                <div class="space-y-2 pt-2">
+                    <label class="block text-[11px] font-bold text-slate-500 uppercase">Delivery Details</label>
+                    <input type="text" id="cust-name" placeholder="Your Name" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-navy-800">
+                    <textarea id="cust-address" rows="2" placeholder="Delivery Address / Village / Mohalah" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-navy-800">Mohalah Mian Gain Village Ibarahim Zain, Charsadda</textarea>
+                </div>
+
+                <div>
+                    <button onclick="checkoutWhatsApp()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-extrabold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Send Order via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-50 hidden transition-all transform duration-300">
+        <div id="toast-inner" class="bg-navy-950 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-navy-800">
+            <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span id="toast-message" class="text-xs sm:text-sm font-bold">Action completed!</span>
+        </div>
+    </div>
+
+    <script>
+        // DEFAULT STORE ITEMS PRE-LOADED IN LOCAL STORAGE
+        const INITIAL_PRODUCTS = [
+            { id: '1', name: 'Fresh Pure Buffalo Milk', category: 'Dairy & Milk', price: 220, unit: 'per Litre', stock: true, icon: 'fa-bottle-droplet' },
+            { id: '2', name: 'Fresh Pure Yogurt (Dahi)', category: 'Dairy & Milk', price: 240, unit: 'per Kg', stock: true, icon: 'fa-bowl-food' },
+            { id: '3', name: 'LPG Gas Cylinder Refill (11.8kg)', category: 'Gas Cylinders', price: 3200, unit: 'per Cylinder', stock: true, icon: 'fa-fire-flame-simple' },
+            { id: '4', name: 'Fresh Potatoes (Aalu)', category: 'Fresh Vegetables', price: 80, unit: 'per Kg', stock: true, icon: 'fa-seedling' },
+            { id: '5', name: 'Fresh Red Tomatoes', category: 'Fresh Vegetables', price: 120, unit: 'per Kg', stock: true, icon: 'fa-apple-whole' },
+            { id: '6', name: 'Fresh Onions (Pyaaz)', category: 'Fresh Vegetables', price: 110, unit: 'per Kg', stock: true, icon: 'fa-carrot' },
+            { id: '7', name: 'Cooking Oil Pack', category: 'Daily Grocery', price: 520, unit: 'per Pack', stock: true, icon: 'fa-bottle-water' },
+            { id: '8', name: 'Tea Leaves / Tea Patti (400g)', category: 'Daily Grocery', price: 680, unit: 'per Pack', stock: true, icon: 'fa-mug-hot' },
+            { id: '9', name: 'White Sugar (Cheeni)', category: 'Daily Grocery', price: 150, unit: 'per Kg', stock: true, icon: 'fa-cubes-stacked' }
+        ];
+
+        const STORE_WHATSAPP_NUMBER = "923150757291";
+        const DEFAULT_ADMIN_PASS = "admin123";
+
+        // APP STATE
+        let products = [];
+        let cart = [];
+        let orders = [];
+        let activeCategory = 'All';
+        let searchQuery = '';
+        let currentSort = 'default';
+        let isAdminLoggedIn = false;
+        let currentAdminPassword = DEFAULT_ADMIN_PASS;
+
+        // INITIALIZATION
+        window.onload = function() {
+            document.getElementById('year-span').textContent = new Date().getFullYear();
+            loadLocalStorageData();
+            renderCategoryFilters();
+            renderProducts();
+            renderCart();
+            renderAdminInventory();
+            renderOrdersLog();
+            updateDashboardStats();
+        };
+
+        function loadLocalStorageData() {
+            const storedProducts = localStorage.getItem('abdul_aziz_products');
+            if (storedProducts) {
+                products = JSON.parse(storedProducts);
+            } else {
+                products = [...INITIAL_PRODUCTS];
+                saveProductsToStorage();
+            }
+
+            const storedCart = localStorage.getItem('abdul_aziz_cart');
+            if (storedCart) {
+                cart = JSON.parse(storedCart);
+            }
+
+            const storedOrders = localStorage.getItem('abdul_aziz_orders');
+            if (storedOrders) {
+                orders = JSON.parse(storedOrders);
+            }
+
+            // Load Custom Admin Password if updated by user
+            const savedPassword = localStorage.getItem('adminPassword');
+            if (savedPassword) {
+                currentAdminPassword = savedPassword;
+            } else {
+                currentAdminPassword = DEFAULT_ADMIN_PASS;
+            }
+        }
+
+        function saveProductsToStorage() {
+            localStorage.setItem('abdul_aziz_products', JSON.stringify(products));
+        }
+
+        function saveCartToStorage() {
+            localStorage.setItem('abdul_aziz_cart', JSON.stringify(cart));
+        }
+
+        function saveOrdersToStorage() {
+            localStorage.setItem('abdul_aziz_orders', JSON.stringify(orders));
+        }
+
+        function resetToDefaultData() {
+            if (confirm('Reset store inventory to default items?')) {
+                products = [...INITIAL_PRODUCTS];
+                saveProductsToStorage();
+                renderProducts();
+                renderAdminInventory();
+                updateDashboardStats();
+                showToast("Products reset to default!");
+            }
+        }
+
+        // NAVIGATION SWITCHING
+        function switchMainTab(tab) {
+            if (tab === 'store') {
+                document.getElementById('store-section').classList.remove('hidden');
+                document.getElementById('admin-section').classList.add('hidden');
+            } else if (tab === 'admin') {
+                if (!isAdminLoggedIn) {
+                    openAdminPortal();
+                    return;
+                }
+                document.getElementById('store-section').classList.add('hidden');
+                document.getElementById('admin-section').classList.remove('hidden');
+            }
+        }
+
+        // CATEGORY & SEARCH FILTERING
+        const categories = ['All', 'Dairy & Milk', 'Fresh Vegetables', 'Gas Cylinders', 'Daily Grocery'];
+
+        function renderCategoryFilters() {
+            const container = document.getElementById('category-pills');
+            container.innerHTML = categories.map(cat => `
+                <button onclick="filterCategory('${cat}')" 
+                        class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition ${activeCategory === cat ? 'bg-navy-800 text-white shadow-md shadow-navy-800/20' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function filterCategory(cat) {
+            activeCategory = cat;
+            document.getElementById('current-category-title').textContent = cat === 'All' ? 'All Available Items' : cat;
+            renderCategoryFilters();
+            renderProducts();
+        }
+
+        function handleFilterAndSort() {
+            searchQuery = document.getElementById('search-input').value.toLowerCase();
+            currentSort = document.getElementById('sort-select').value;
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const noProducts = document.getElementById('no-products-view');
+
+            let filtered = products.filter(p => {
+                const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
+                const matchesSearch = p.name.toLowerCase().includes(searchQuery) || p.category.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (currentSort === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (currentSort === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (currentSort === 'name-asc') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            document.getElementById('product-count').textContent = `Showing ${filtered.length} items`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noProducts.classList.remove('hidden');
+                return;
+            }
+
+            noProducts.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(p => {
+                const iconClass = p.icon || getDefaultIconForCategory(p.category);
+                
+                return `
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="p-5">
+                        <div class="flex items-start justify-between gap-2 mb-3">
+                            <div class="w-12 h-12 bg-navy-50 text-navy-800 rounded-2xl flex items-center justify-center text-xl group-hover:scale-110 group-hover:bg-navy-800 group-hover:text-gold-400 transition duration-300">
+                                <i class="fa-solid ${iconClass}"></i>
+                            </div>
+                            <span class="px-2.5 py-1 text-[10px] font-bold rounded-full ${p.stock ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+                                ${p.stock ? 'In Stock' : 'Out of Stock'}
+                            </span>
+                        </div>
+                        
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">${p.category}</span>
+                        <h4 class="font-bold text-slate-900 text-base leading-snug">${p.name}</h4>
+                        
+                        <div class="mt-3 flex items-baseline gap-1">
+                            <span class="text-xl font-black text-navy-950">Rs. ${p.price}</span>
+                            <span class="text-xs text-slate-500 font-medium">${p.unit}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 border-t border-slate-100">
+                        <button onclick="addToCart('${p.id}')" ${!p.stock ? 'disabled' : ''} 
+                            class="w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition ${p.stock ? 'bg-navy-800 hover:bg-navy-900 text-white shadow-md shadow-navy-800/20' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}">
+                            <i class="fa-solid fa-cart-plus text-gold-400"></i>
+                            ${p.stock ? 'Add to Cart' : 'Unavailable'}
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function getDefaultIconForCategory(cat) {
+            switch(cat) {
+                case 'Dairy & Milk': return 'fa-bottle-droplet';
+                case 'Gas Cylinders': return 'fa-fire-flame-simple';
+                case 'Fresh Vegetables': return 'fa-seedling';
+                default: return 'fa-basket-shopping';
+            }
+        }
+
+        // CART LOGIC
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    unit: product.unit,
+                    qty: 1
+                });
+            }
+
+            saveCartToStorage();
+            renderCart();
+            showToast(`Added "${product.name}" to cart`);
+        }
+
+        function updateCartQty(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.qty += change;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+
+            saveCartToStorage();
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const badge = document.getElementById('cart-badge');
+            
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.textContent = totalQty;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-slate-400">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-3"></i>
+                        <p class="text-xs font-bold">Your cart is empty</p>
+                    </div>
+                `;
+                document.getElementById('cart-subtotal').textContent = `Rs. 0`;
+                document.getElementById('cart-total').textContent = `Rs. 0`;
+                return;
+            }
+
+            let subtotal = 0;
+            container.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                return `
+                <div class="flex items-center justify-between bg-slate-50 p-3.5 rounded-2xl border border-slate-200">
+                    <div class="flex-grow pr-2">
+                        <h5 class="text-xs font-bold text-slate-800">${item.name}</h5>
+                        <p class="text-[11px] text-slate-500">Rs. ${item.price} / ${item.unit}</p>
+                        <p class="text-xs font-bold text-navy-800 mt-0.5">Rs. ${itemTotal}</p>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-white rounded-xl p-1 border border-slate-200">
+                        <button onclick="updateCartQty('${item.id}', -1)" class="w-6 h-6 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 text-xs font-bold">-</button>
+                        <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+                        <button onclick="updateCartQty('${item.id}', 1)" class="w-6 h-6 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 text-xs font-bold">+</button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            document.getElementById('cart-subtotal').textContent = `Rs. ${subtotal}`;
+            document.getElementById('cart-total').textContent = `Rs. ${subtotal}`;
+        }
+
+        function toggleCartModal() {
+            document.getElementById('cart-modal').classList.toggle('hidden');
+        }
+
+        // WHATSAPP CHECKOUT LOGIC
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast("Please add items to cart first!", "error");
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim() || 'Customer';
+            const address = document.getElementById('cust-address').value.trim() || 'Mohalah Mian Gain Village Ibarahim Zain, Charsadda';
+
+            let msg = `*NEW ORDER - ABDUL AZIZ GENERAL STORE*\n`;
+            msg += `-----------------------------------\n`;
+            msg += `*Customer:* ${name}\n`;
+            msg += `*Address:* ${address}\n`;
+            msg += `-----------------------------------\n`;
+            msg += `*ORDER ITEMS:*\n`;
+
+            let grandTotal = 0;
+            cart.forEach((item, index) => {
+                const total = item.price * item.qty;
+                grandTotal += total;
+                msg += `${index + 1}. ${item.name} - ${item.qty} x Rs.${item.price} = Rs.${total}\n`;
+            });
+
+            msg += `-----------------------------------\n`;
+            msg += `*TOTAL AMOUNT: Rs. ${grandTotal}*\n`;
+            msg += `-----------------------------------\n`;
+            msg += `Google Map Location: https://maps.app.goo.gl/qvFRjHMeYpwUWzWH8`;
+
+            saveOrderHistory(name, address, grandTotal, "WhatsApp");
+
+            const encoded = encodeURIComponent(msg);
+            window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+
+            cart = [];
+            saveCartToStorage();
+            renderCart();
+            toggleCartModal();
+            showToast("Order sent via WhatsApp!");
+        }
+
+        function saveOrderHistory(customer, address, total, channel) {
+            const newOrder = {
+                id: 'AZ-' + Date.now().toString().slice(-5),
+                date: new Date().toLocaleString(),
+                customer,
+                address,
+                items: [...cart],
+                total,
+                channel
+            };
+            orders.unshift(newOrder);
+            saveOrdersToStorage();
+            renderOrdersLog();
+        }
+
+        // ADMIN ACCESS LOGIC
+        function openAdminPortal() {
+            if (isAdminLoggedIn) {
+                switchMainTab('admin');
+            } else {
+                document.getElementById('admin-login-modal').classList.remove('hidden');
+            }
+        }
+
+        function closeAdminPortal() {
+            document.getElementById('admin-login-modal').classList.add('hidden');
+        }
+
+        function verifyAdminPassword(e) {
+            e.preventDefault();
+            const input = document.getElementById('admin-password-input').value;
+            if (input === currentAdminPassword) {
+                isAdminLoggedIn = true;
+                closeAdminPortal();
+                switchMainTab('admin');
+                showToast("Admin access granted!");
+                document.getElementById('admin-password-input').value = '';
+            } else {
+                showToast("Incorrect password!", "error");
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            switchMainTab('store');
+            showToast("Admin dashboard locked.");
+        }
+
+        function switchAdminTab(tab) {
+            document.getElementById('admin-tab-inventory').classList.add('hidden');
+            document.getElementById('admin-tab-add-product').classList.add('hidden');
+            document.getElementById('admin-tab-orders').classList.add('hidden');
+            document.getElementById('admin-tab-settings').classList.add('hidden');
+
+            document.getElementById('tab-btn-inventory').className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-50 transition whitespace-nowrap";
+            document.getElementById('tab-btn-add').className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-50 transition whitespace-nowrap";
+            document.getElementById('tab-btn-orders').className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-50 transition whitespace-nowrap";
+            document.getElementById('tab-btn-settings').className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-50 transition whitespace-nowrap";
+
+            if (tab === 'inventory') {
+                document.getElementById('admin-tab-inventory').classList.remove('hidden');
+                document.getElementById('tab-btn-inventory').className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-navy-800 bg-navy-50 transition whitespace-nowrap";
+                renderAdminInventory();
+            } else if (tab === 'add-product') {
+                document.getElementById('admin-tab-add-product').classList.remove('hidden');
+                document.getElementById('tab-btn-add').className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-navy-800 bg-navy-50 transition whitespace-nowrap";
+            } else if (tab === 'orders') {
+                document.getElementById('admin-tab-orders').classList.remove('hidden');
+                document.getElementById('tab-btn-orders').className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-navy-800 bg-navy-50 transition whitespace-nowrap";
+                renderOrdersLog();
+            } else if (tab === 'settings') {
+                document.getElementById('admin-tab-settings').classList.remove('hidden');
+                document.getElementById('tab-btn-settings').className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-navy-800 bg-navy-50 transition whitespace-nowrap";
+            }
+        }
+
+        // NEW FEATURE: CHANGE ADMIN PASSWORD LOGIC
+        function handleChangeAdminPassword(e) {
+            e.preventDefault();
+            const curr = document.getElementById('pwd-current').value;
+            const newPwd = document.getElementById('pwd-new').value;
+            const confirmPwd = document.getElementById('pwd-confirm').value;
+
+            if (curr !== currentAdminPassword) {
+                showToast("Current password is incorrect!", "error");
+                return;
+            }
+
+            if (newPwd.length < 4) {
+                showToast("New password must be at least 4 characters long!", "error");
+                return;
+            }
+
+            if (newPwd !== confirmPwd) {
+                showToast("New passwords do not match!", "error");
+                return;
+            }
+
+            currentAdminPassword = newPwd;
+            localStorage.setItem('adminPassword', newPwd);
+
+            document.getElementById('password-change-form').reset();
+            showToast("Admin password updated successfully!");
+        }
+
+        function resetPasswordToDefault() {
+            if (confirm("Reset admin password back to default 'admin123'?")) {
+                currentAdminPassword = DEFAULT_ADMIN_PASS;
+                localStorage.removeItem('adminPassword');
+                document.getElementById('password-change-form').reset();
+                showToast("Admin password reset to 'admin123'");
+            }
+        }
+
+        function updateDashboardStats() {
+            document.getElementById('stat-total-items').textContent = products.length;
+            const outOfStock = products.filter(p => !p.stock).length;
+            document.getElementById('stat-out-stock').textContent = outOfStock;
+            
+            const uniqueCats = new Set(products.map(p => p.category));
+            document.getElementById('stat-categories').textContent = uniqueCats.size;
+        }
+
+        function renderAdminInventory() {
+            const tbody = document.getElementById('admin-inventory-table');
+            
+            tbody.innerHTML = products.map(p => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-4 font-bold text-slate-800 flex items-center gap-3">
+                        <div class="w-8 h-8 bg-navy-100 text-navy-800 rounded-lg flex items-center justify-center text-xs">
+                            <i class="fa-solid ${p.icon || 'fa-box'}"></i>
+                        </div>
+                        ${p.name}
+                    </td>
+                    <td class="p-4 text-xs font-semibold text-slate-500">${p.category}</td>
+                    <td class="p-4">
+                        <div class="flex items-center gap-1">
+                            <span class="text-xs text-slate-400">Rs.</span>
+                            <input type="number" value="${p.price}" onchange="quickUpdatePrice('${p.id}', this.value)" class="w-24 px-2 py-1 bg-slate-100 rounded border border-slate-300 font-bold text-xs focus:bg-white focus:ring-1 focus:ring-navy-800">
+                        </div>
+                    </td>
+                    <td class="p-4 text-xs text-slate-500">${p.unit}</td>
+                    <td class="p-4">
+                        <button onclick="toggleStock('${p.id}')" class="px-3 py-1 rounded-full text-xs font-bold ${p.stock ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+                            ${p.stock ? 'In Stock' : 'Out of Stock'}
+                        </button>
+                    </td>
+                    <td class="p-4 text-right space-x-2">
+                        <button onclick="editProduct('${p.id}')" class="p-2 text-slate-500 hover:text-navy-800"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteProduct('${p.id}')" class="p-2 text-slate-500 hover:text-rose-600"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+
+            updateDashboardStats();
+        }
+
+        function quickUpdatePrice(id, newPrice) {
+            const product = products.find(p => p.id === id);
+            if (product) {
+                product.price = parseFloat(newPrice) || product.price;
+                saveProductsToStorage();
+                renderProducts();
+                showToast(`Price updated for ${product.name}`);
+            }
+        }
+
+        function toggleStock(id) {
+            const product = products.find(p => p.id === id);
+            if (product) {
+                product.stock = !product.stock;
+                saveProductsToStorage();
+                renderAdminInventory();
+                renderProducts();
+                showToast(`Stock updated for ${product.name}`);
+            }
+        }
+
+        function editProduct(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            document.getElementById('form-product-id').value = product.id;
+            document.getElementById('form-name').value = product.name;
+            document.getElementById('form-category').value = product.category;
+            document.getElementById('form-unit').value = product.unit;
+            document.getElementById('form-price').value = product.price;
+            document.getElementById('form-stock').value = product.stock ? "true" : "false";
+            document.getElementById('form-icon').value = product.icon || '';
+
+            document.getElementById('form-title').textContent = "Edit Product Item";
+            switchAdminTab('add-product');
+        }
+
+        function deleteProduct(id) {
+            if (confirm("Are you sure you want to delete this product?")) {
+                products = products.filter(p => p.id !== id);
+                saveProductsToStorage();
+                renderAdminInventory();
+                renderProducts();
+                showToast("Product deleted!");
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('product-form').reset();
+            document.getElementById('form-product-id').value = '';
+            document.getElementById('form-title').textContent = "Add New Item to Store";
+            switchAdminTab('inventory');
+        }
+
+        function handleProductSubmit(e) {
+            e.preventDefault();
+
+            const editId = document.getElementById('form-product-id').value;
+            const name = document.getElementById('form-name').value.trim();
+            const category = document.getElementById('form-category').value;
+            const unit = document.getElementById('form-unit').value.trim();
+            const price = parseFloat(document.getElementById('form-price').value);
+            const stock = document.getElementById('form-stock').value === "true";
+            let icon = document.getElementById('form-icon').value.trim();
+
+            if (!icon) {
+                icon = getDefaultIconForCategory(category);
+            }
+
+            if (editId) {
+                const product = products.find(p => p.id === editId);
+                if (product) {
+                    product.name = name;
+                    product.category = category;
+                    product.unit = unit;
+                    product.price = price;
+                    product.stock = stock;
+                    product.icon = icon;
+                }
+                showToast("Product updated!");
+            } else {
+                const newProd = {
+                    id: Date.now().toString(),
+                    name,
+                    category,
+                    unit,
+                    price,
+                    stock,
+                    icon
+                };
+                products.push(newProd);
+                showToast("New product added!");
+            }
+
+            saveProductsToStorage();
+            renderProducts();
+            resetForm();
+        }
+
+        function renderOrdersLog() {
+            const container = document.getElementById('orders-container');
+
+            if (orders.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10 text-slate-400">
+                        <i class="fa-solid fa-receipt text-3xl mb-2"></i>
+                        <p class="text-xs font-bold">No orders recorded yet.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = orders.map(ord => `
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 mb-3 space-y-2">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-bold bg-navy-100 text-navy-800 px-2 py-0.5 rounded">${ord.id}</span>
+                            <span class="text-xs text-slate-400 ml-2">${ord.date}</span>
+                            <h5 class="font-bold text-slate-800 text-sm mt-1">${ord.customer} (${ord.channel})</h5>
+                            <p class="text-xs text-slate-500">${ord.address}</p>
+                        </div>
+                        <span class="font-extrabold text-slate-900 text-base">Rs. ${ord.total}</span>
+                    </div>
+                    <div class="text-xs text-slate-600 border-t border-slate-200 pt-2">
+                        <strong>Items:</strong> ${ord.items.map(i => `${i.name} (x${i.qty})`).join(', ')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function clearOrdersLog() {
+            if (confirm("Clear order history log?")) {
+                orders = [];
+                saveOrdersToStorage();
+                renderOrdersLog();
+                showToast("Order log cleared!");
+            }
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast-notification');
+            const icon = document.getElementById('toast-icon');
+            const msg = document.getElementById('toast-message');
+
+            msg.textContent = message;
+            if (type === 'error') {
+                icon.className = 'fa-solid fa-circle-exclamation text-rose-400';
+            } else {
+                icon.className = 'fa-solid fa-circle-check text-emerald-400';
+            }
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
